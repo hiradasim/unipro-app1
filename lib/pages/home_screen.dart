@@ -36,7 +36,7 @@ class _HomeScreenState extends State<HomeScreen> {
     (index) => {
       'name': 'محصول ${index + 1}',
       'price': '۲٬۰۰۰٬۰۰۰ تومان',
-      'image': 'assets/WOMEN-IDA BIKE TIGHTS grey.webp'
+      'image': 'assets/women_ida_bike_tights_grey.webp',
     },
   );
 
@@ -198,8 +198,8 @@ class _HomeScreenState extends State<HomeScreen> {
                       borderRadius: BorderRadius.circular(12),
                       boxShadow: const [
                         BoxShadow(
-                          color: Colors.black12,
-                          blurRadius: 8,
+                          color: Colors.black26,
+                          blurRadius: 10,
                           offset: Offset(0, 4),
                         ),
                       ],
@@ -207,91 +207,60 @@ class _HomeScreenState extends State<HomeScreen> {
                     child: glassCard(
                       radius: BorderRadius.circular(12),
                       padding: const EdgeInsets.all(8),
-                      child: Stack(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          GestureDetector(
-                            onTap: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (_) => ProductPage(product: product),
-                                ),
-                              ).then((_) => setState(() {}));
-                            },
-                            child: Column(
-                              children: [
-                                Expanded(
-                                  child: ClipRRect(
-                                    borderRadius: BorderRadius.circular(8),
-                                    child: Image.asset(
-                                      product['image'] ?? '',
-                                      fit: BoxFit.cover,
-                                      width: double.infinity,
-                                    ),
-                                  ),
-                                ),
-                                const SizedBox(height: 8),
-                                Text(product['name'] ?? '',
-                                    style: const TextStyle(fontWeight: FontWeight.bold)),
-                                Text(product['price'] ?? '',
-                                    style: TextStyle(color: Colors.green[700])),
-                              ],
-                            ),
-                          ),
-                          Positioned(
-                            bottom: 0,
-                            left: 0,
-                            child: IconButton(
-                              icon: Icon(
-                                liked ? Icons.favorite : Icons.favorite_border,
-                                color: Colors.black,
-                              ),
-                              onPressed: () => _toggleLike(product),
-                            ),
-                          ),
-                          Positioned(
-                            bottom: 0,
-                            right: 0,
-                            child: AnimatedScale(
-                              scale: _animatingAdd.contains(index) ? 1.2 : 1.0,
-                              duration: const Duration(milliseconds: 200),
-                              child: Container(
-                                height: 36,
-                                width: 36,
-                                decoration: const BoxDecoration(
-                                  shape: BoxShape.circle,
-                                  gradient: LinearGradient(
-                                    colors: [
-                                      Color(0xFF8E2DE2),
-                                      Color(0xFF4A00E0),
-                                    ],
-                                  ),
-                                  boxShadow: [
-                                    BoxShadow(
-                                      color: Colors.black26,
-                                      blurRadius: 4,
-                                      offset: Offset(0, 2),
-                                    ),
-                                  ],
-                                ),
-                                child: IconButton(
-                                  icon: const Icon(Icons.add, color: Colors.white),
-                                  onPressed: () {
-                                    setState(() {
-                                      _animatingAdd.add(index);
-                                    });
-                                    Future.delayed(const Duration(milliseconds: 200), () {
-                                      setState(() {
-                                        _animatingAdd.remove(index);
-                                      });
-                                    });
-                                    _addToCart(product);
-                                  },
-                                  splashRadius: 18,
-                                  padding: EdgeInsets.zero,
-                                ),
+                          Expanded(
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(8),
+                              child: Image.asset(
+                                product['image']!,
+                                fit: BoxFit.cover,
+                                width: double.infinity,
+                                height: double.infinity,
                               ),
                             ),
+                          ),
+                          const SizedBox(height: 8),
+                          Text(product['name'] ?? ''),
+                          const SizedBox(height: 4),
+                          Text(product['price'] ?? '',
+                              style: TextStyle(color: Colors.green[700])),
+                          const SizedBox(height: 8),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              GestureDetector(
+                                onTap: () => _toggleLike(product),
+                                child: Icon(
+                                  liked
+                                      ? Icons.favorite
+                                      : Icons.favorite_border,
+                                  color: liked ? Colors.pink : Colors.grey,
+                                ),
+                              ),
+                              GestureDetector(
+                                onTap: _animatingAdd.contains(index)
+                                    ? null
+                                    : () {
+                                        _animatingAdd.add(index);
+                                        _addToCart(product);
+                                        Future.delayed(
+                                          const Duration(milliseconds: 700),
+                                          () {
+                                            _animatingAdd.remove(index);
+                                            if (mounted) setState(() {});
+                                          },
+                                        );
+                                      },
+                                child: AnimatedScale(
+                                  duration: const Duration(milliseconds: 300),
+                                  scale:
+                                      _animatingAdd.contains(index) ? 1.2 : 1.0,
+                                  child: const Icon(Icons.add_shopping_cart),
+                                ),
+                              ),
+                            ],
                           ),
                         ],
                       ),
@@ -300,7 +269,6 @@ class _HomeScreenState extends State<HomeScreen> {
                 },
               ),
             ),
-            const SizedBox(height: 100),
           ],
         ),
       ),

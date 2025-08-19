@@ -15,37 +15,19 @@ class MainNavigation extends StatefulWidget {
   State<MainNavigation> createState() => _MainNavigationState();
 }
 
-class _MainNavigationState extends State<MainNavigation>
-    with TickerProviderStateMixin {
+class _MainNavigationState extends State<MainNavigation> {
   int _currentIndex = 0;
-
   late final List<Widget> _pages;
-  late final List<AnimationController> _controllers;
 
   @override
   void initState() {
     super.initState();
     _pages = [
-  const HomeScreen(),
-   CategoryPage(),
-  const SearchPage(),
-  const AuthGate(),        // ⟵ was: LoginPage()
-];
-    _controllers = List.generate(
-      _pages.length,
-      (_) => AnimationController(
-        duration: const Duration(milliseconds: 300),
-        vsync: this,
-      )..forward(),
-    );
-  }
-
-  @override
-  void dispose() {
-    for (final controller in _controllers) {
-      controller.dispose();
-    }
-    super.dispose();
+      const HomeScreen(),
+      CategoryPage(),
+      const SearchPage(),
+      const AuthGate(), // ⟵ was: LoginPage()
+    ];
   }
 
   @override
@@ -103,8 +85,8 @@ class _MainNavigationState extends State<MainNavigation>
                                   color: Colors.red,
                                   shape: BoxShape.circle,
                                 ),
-                                constraints:
-                                    const BoxConstraints(minWidth: 16, minHeight: 16),
+                                constraints: const BoxConstraints(
+                                    minWidth: 16, minHeight: 16),
                                 child: Center(
                                   child: Text(
                                     '$count',
@@ -179,34 +161,37 @@ class _MainNavigationState extends State<MainNavigation>
               child: BottomNavigationBar(
                 backgroundColor: Colors.transparent,
                 elevation: 0,
-                // These now only affect the LABELS (icons are Images)
                 selectedItemColor: Colors.black,
                 unselectedItemColor: Colors.grey,
-                selectedLabelStyle: const TextStyle(fontWeight: FontWeight.w600),
+                selectedLabelStyle:
+                    const TextStyle(fontWeight: FontWeight.w600),
                 showUnselectedLabels: true,
                 currentIndex: _currentIndex,
                 onTap: (index) => setState(() => _currentIndex = index),
                 type: BottomNavigationBarType.fixed,
-                // Use Image.asset to prevent tinting
                 items: [
                   BottomNavigationBarItem(
                     icon: Image.asset('assets/home_icon.png', height: 24),
-                    activeIcon: Image.asset('assets/home_icon.png', height: 24),
+                    activeIcon:
+                        Image.asset('assets/home_icon.png', height: 24),
                     label: 'خانه',
                   ),
                   BottomNavigationBarItem(
                     icon: Image.asset('assets/menu_icon.png', height: 24),
-                    activeIcon: Image.asset('assets/menu_icon.png', height: 24),
+                    activeIcon:
+                        Image.asset('assets/menu_icon.png', height: 24),
                     label: 'دسته‌بندی',
                   ),
                   BottomNavigationBarItem(
                     icon: Image.asset('assets/search_icon.png', height: 24),
-                    activeIcon: Image.asset('assets/search_icon.png', height: 24),
+                    activeIcon:
+                        Image.asset('assets/search_icon.png', height: 24),
                     label: 'جستجو',
                   ),
                   BottomNavigationBarItem(
                     icon: Image.asset('assets/uniclub_icon.png', height: 24),
-                    activeIcon: Image.asset('assets/uniclub_icon.png', height: 24),
+                    activeIcon:
+                        Image.asset('assets/uniclub_icon.png', height: 24),
                     label: 'یونی‌کلاب',
                   ),
                 ],

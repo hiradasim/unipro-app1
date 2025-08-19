@@ -13,9 +13,9 @@ class ProductPage extends StatefulWidget {
 
 class _ProductPageState extends State<ProductPage> {
   final Map<String, List<String>> _colorImages = {
-    'grey': ['assets/grey 3.webp', 'assets/grey 2.webp'],
-    'light purple': ['assets/light purple 3.webp', 'assets/light purple 2.webp'],
-    'light brown': ['assets/light brown 3.webp', 'assets/light brown 2.webp'],
+    'grey': ['assets/grey_3.webp', 'assets/grey_2.webp'],
+    'light purple': ['assets/light_purple_3.webp', 'assets/light_purple_2.webp'],
+    'light brown': ['assets/light_brown_3.webp', 'assets/light_brown_2.webp'],
   };
 
   String _selectedColor = 'grey';
@@ -200,20 +200,16 @@ class _ProductPageState extends State<ProductPage> {
                             ),
                           ),
                         );
-                        Future.delayed(const Duration(milliseconds: 200), () {
+                      },
+                      child: AnimatedScale(
+                        duration: const Duration(milliseconds: 300),
+                        scale: _isAdding ? 1.2 : 1.0,
+                        onEnd: () {
                           if (mounted) {
                             setState(() => _isAdding = false);
                           }
-                        });
-                      },
-                      child: AnimatedScale(
-                        scale: _isAdding ? 1.2 : 1.0,
-                        duration: const Duration(milliseconds: 200),
-                        child: const CircleAvatar(
-                          radius: 30,
-                          backgroundColor: Colors.black,
-                          child: Icon(Icons.add, color: Colors.white, size: 30),
-                        ),
+                        },
+                        child: const Icon(Icons.add_shopping_cart),
                       ),
                     ),
                   ),

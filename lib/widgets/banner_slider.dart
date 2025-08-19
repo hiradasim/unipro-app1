@@ -48,9 +48,9 @@ class _BannerSliderState extends State<BannerSlider> {
           child: PageView(
             controller: _pageController,
             children:  [
-              Image.asset('assets/banner3.png', fit: BoxFit.cover),
-              Image.asset('assets/banner2.png', fit: BoxFit.cover),
-              Image.asset('assets/banner1.png', fit: BoxFit.cover),
+              Image.asset('assets/banner_3.png', fit: BoxFit.cover),
+              Image.asset('assets/banner_2.png', fit: BoxFit.cover),
+              Image.asset('assets/banner_1.png', fit: BoxFit.cover),
             ],
             onPageChanged: (index) {
               _currentPage = index;

@@ -41,7 +41,7 @@ class CategoryPage extends StatelessWidget {
             final categoryName = category['name'] ?? '';
             return GestureDetector(
               onTap: () {
-                print('Selected $categoryName');
+                // TODO: handle category tap
               },
               child: Container(
                 decoration: BoxDecoration(

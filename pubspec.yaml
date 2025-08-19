@@ -17,8 +17,7 @@ dependencies:
   intl: ^0.19.0
   supabase_flutter: ^2.5.0
   file_picker: ^8.0.0
-
-
+  flutter_dotenv: ^5.1.0
 
 dev_dependencies:
   flutter_test:
@@ -29,6 +28,7 @@ flutter:
   uses-material-design: true
 
   assets:
+    - .env
     - assets/banner_3.png
     - assets/banner_2.png
     - assets/banner_1.png
@@ -53,13 +53,9 @@ flutter:
     - assets/shortw.webp
     - assets/leg.webp
     - assets/top.webp
-    - assets/top.webp
     - assets/light purple 2.webp
     - assets/light purple 3.webp
     - assets/light brown 2.webp
     - assets/light brown 3.webp
     - assets/grey 2.webp
     - assets/grey 3.webp
-    
-
-
