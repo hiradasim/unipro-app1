@@ -1,0 +1,65 @@
+name: unipro_app
+description: A new Flutter project.
+
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.0.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^1.0.8
+  flutter_riverpod: ^2.5.1
+  hive: ^2.2.3
+  hive_flutter: ^1.1.0
+  intl: ^0.19.0
+  supabase_flutter: ^2.5.0
+  file_picker: ^8.0.0
+
+
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^2.0.0
+
+flutter:
+  uses-material-design: true
+
+  assets:
+    - assets/banner_3.png
+    - assets/banner_2.png
+    - assets/banner_1.png
+    - assets/men.png
+    - assets/weman.png
+    - assets/WOMEN-IDA BIKE TIGHTS grey.webp
+    - assets/home_icon.png
+    - assets/menu_icon.png
+    - assets/search_icon.png
+    - assets/uniclub_icon.png
+    - assets/key.png
+    - assets/close-eye.png
+    - assets/eye.png
+    - assets/reset-password.png
+    - assets/people.png
+    - assets/Capshen.webp
+    - assets/sweet.webp
+    - assets/shortm.webp
+    - assets/Tm.webp
+    - assets/SL.webp
+    - assets/Tw.webp
+    - assets/shortw.webp
+    - assets/leg.webp
+    - assets/top.webp
+    - assets/top.webp
+    - assets/light purple 2.webp
+    - assets/light purple 3.webp
+    - assets/light brown 2.webp
+    - assets/light brown 3.webp
+    - assets/grey 2.webp
+    - assets/grey 3.webp
+    
+
+
