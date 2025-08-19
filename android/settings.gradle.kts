@@ -1,10 +1,8 @@
-// Kotlin DSL + Flutter — settings.gradle.kts
-
-import java.util.Properties
+// android/settings.gradle.kts
 import java.io.File
+import java.util.Properties
 
 pluginManagement {
-    // Resolve Flutter SDK path BEFORE using it
     val localPropsFile = File(rootDir, "local.properties")
     val props = Properties().apply {
         if (localPropsFile.exists()) {
@@ -17,7 +15,6 @@ pluginManagement {
         props.getProperty("flutter.sdk")
             ?: error("`flutter.sdk` not found in local.properties")
 
-    // Make Flutter's Gradle build logic visible
     includeBuild("$flutterSdkPath/packages/flutter_tools/gradle")
 
     repositories {
@@ -41,7 +38,6 @@ plugins {
     id("dev.flutter.flutter-plugin-loader") version "1.0.0"
     id("com.android.application") version "8.3.0" apply false
     id("org.jetbrains.kotlin.android") version "1.9.10" apply false
-    // id("com.android.library") version "8.3.0" apply false
 }
 
 rootProject.name = "android"
