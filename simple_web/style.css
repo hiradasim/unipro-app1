@@ -1,0 +1,42 @@
+body {
+  font-family: Arial, sans-serif;
+  max-width: 500px;
+  margin: 40px auto;
+  padding: 0 10px;
+}
+
+form {
+  display: flex;
+  margin-bottom: 20px;
+}
+
+#task-input {
+  flex: 1;
+  padding: 8px;
+}
+
+button {
+  padding: 8px 12px;
+  margin-left: 5px;
+}
+
+li {
+  list-style: none;
+  padding: 8px;
+  border-bottom: 1px solid #ddd;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+li.done {
+  text-decoration: line-through;
+  color: #888;
+}
+
+li button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #c00;
+}
