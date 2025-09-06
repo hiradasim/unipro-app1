@@ -1,3 +1,4 @@
+// Client-side logic for the shared task server
 const API_URL = "http://localhost:3000";
 const form = document.getElementById("task-form");
 const input = document.getElementById("task-input");
