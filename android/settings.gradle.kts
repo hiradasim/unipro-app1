@@ -1,12 +1,11 @@
 // android/settings.gradle.kts
 import java.io.File
-import java.util.Properties
 
 pluginManagement {
     val localPropsFile = File(rootDir, "local.properties")
-    val props = Properties().apply {
+    val props = java.util.Properties().apply {
         if (localPropsFile.exists()) {
-            localPropsFile.inputStream().use { load(it) }
+            localPropsFile.inputStream().use { this.load(it) }
         } else {
             error("Missing ${localPropsFile.absolutePath}. Run `flutter pub get` to generate it, or add `flutter.sdk=...`.")
         }
