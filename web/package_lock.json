@@ -1,9 +1,4 @@
- (cd "$(git rev-parse --show-toplevel)" && git apply --3way <<'EOF' 
-diff --git a//dev/null b/web/package-lock.json
-index 0000000000000000000000000000000000000000..2896c6e091519f0379be5387533633def97e893e 100644
---- a//dev/null
-+++ b/web/package-lock.json
-@@ -0,0 +1,6270 @@
+
 +{
 +  "name": "web",
 +  "version": "0.1.0",
