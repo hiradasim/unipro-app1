@@ -1,48 +1,27 @@
- (cd "$(git rev-parse --show-toplevel)" && git apply --3way <<'EOF' 
-diff --git a/README.md b/README.md
-index 8eb7091837a051a6e8ac3b7da063b7c37612b58a..34dfc6dfd21441a7dcd92f67882040e937c1133f 100644
---- a/README.md
-+++ b/README.md
-@@ -1,16 +1,39 @@
- # unipro_new_fixed
- 
- A new Flutter project.
- 
- ## Getting Started
- 
- This project is a starting point for a Flutter application.
- 
- A few resources to get you started if this is your first Flutter project:
- 
- - [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
- - [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
- 
- For help getting started with Flutter development, view the
- [online documentation](https://docs.flutter.dev/), which offers tutorials,
- samples, guidance on mobile development, and a full API reference.
-+
-+## Simple Web Task Manager
-+
-+A lightweight web version of a task manager lives in the `simple_web`
-+directory and works together with a tiny Node server so multiple devices
-+share the same task list.
-+
-+### 1. Start the task server
-+
-+```
-+node simple_server/server.js
-+```
-+
-+The server listens on `http://localhost:3000` and stores data in
-+`simple_server/tasks.json`.
-+
-+### 2. Open the web client
-+
-+Serve the `simple_web` directory however you like (for example,
-+`python3 -m http.server 8080`) and visit the served URL. The client will
-+communicate with the server to add, complete, and remove tasks. The task
-+list refreshes automatically every few seconds so all connected browsers
-+stay in sync.
- 
-EOF
-)
+# Unipro Clothing App
+
+This is a simple Next.js demo for a clothing brand. It includes:
+
+- **Home** page showing featured products pulled from Supabase
+- **Search** page with client-side search against Supabase data
+- **Categories** page listing product categories
+- **UniClub** page with a basic login form
+
+Images and data are loaded from Supabase using the provided public URL and key.
+No local image assets are bundled with the app; all pictures are fetched directly
+from the Supabase host.
+
+## Setup
+
+1. Ensure the `.env.local` file contains your Supabase credentials.
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+3. Run the development server:
+   ```bash
+   npm run dev
+   ```
+4. Open [http://localhost:3000](http://localhost:3000) in your browser.
+
+The app uses Next.js with the App Router and Tailwind CSS.
