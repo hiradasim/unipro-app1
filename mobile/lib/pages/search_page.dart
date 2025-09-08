@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import '../widgets/image_grid.dart';
-import '../supabase_client.dart';
 
 class SearchPage extends StatefulWidget {
   const SearchPage({super.key});
@@ -10,28 +8,56 @@ class SearchPage extends StatefulWidget {
 }
 
 class _SearchPageState extends State<SearchPage> {
-  String query = '';
+  final _controller = TextEditingController();
+  final _items = ['محصول ۱', 'محصول ۲', 'ویژه', 'کفش', 'لباس'];
+
+  String _filter = '';
 
   @override
   Widget build(BuildContext context) {
+    final results = _items
+        .where((e) => e.contains(_filter))
+        .toList();
     return Scaffold(
+      backgroundColor: Colors.transparent,
       appBar: AppBar(
-        title: const Text('Search'),
-        leading: Image.network(publicIcon('logo.ico')),
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        centerTitle: true,
+        title: const Text('Unipro'),
       ),
-      body: Column(
-        children: [
-          Padding(
-            padding: const EdgeInsets.all(8),
-            child: TextField(
-              decoration: const InputDecoration(labelText: 'Search'),
-              onChanged: (v) => setState(() => query = v),
+      body: Padding(
+        padding: const EdgeInsets.all(16),
+        child: Column(
+          children: [
+            TextField(
+              controller: _controller,
+              decoration: const InputDecoration(
+                hintText: 'جستجو...'
+              ),
+              onChanged: (v) => setState(() => _filter = v),
             ),
-          ),
-          Expanded(
-            child: ImageGrid(bucket: 'products', search: query),
-          ),
-        ],
+            const SizedBox(height: 16),
+            Expanded(
+              child: ListView.builder(
+                itemCount: results.length,
+                itemBuilder: (context, i) {
+                  return Container(
+                    margin: const EdgeInsets.only(bottom: 12),
+                    decoration: BoxDecoration(
+                      color: Colors.white.withOpacity(0.6),
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                    child: ListTile(
+                      title: Text(results[i]),
+                      trailing: const Icon(Icons.chevron_right),
+                    ),
+                  );
+                },
+              ),
+            )
+          ],
+        ),
       ),
     );
   }
