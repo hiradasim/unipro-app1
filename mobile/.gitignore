@@ -1,36 +1,27 @@
- (cd "$(git rev-parse --show-toplevel)" && git apply --3way <<'EOF' 
-diff --git a//dev/null b/mobile/.gitignore
-index 0000000000000000000000000000000000000000..5d04303a174806aa914dac611b7eac7b15d8af04 100644
---- a//dev/null
-+++ b/mobile/.gitignore
-@@ -0,0 +1,27 @@
-+# Flutter/Dart/Pub related
-+**/doc/api/
-+**/ios/Flutter/.last_build_id
-+.dart_tool/
-+.packages
-+.pub/
-+build/
-+# Symbolication
-+app.*.symbols
-+# Obfuscation
-+app.*.map.json
-+# Android Studio
-+*.iml
-+.idea/
-+.android/
-+FlutterDevSDK/
-+# Xcode
-+*.pbxuser
-+*.mode1v3
-+*.mode2v3
-+*.perspectivev3
-+**/*sync/**
-+DerivedData/
-+# VS Code
-+.vscode/
-+# Misc
-+*.log
- 
-EOF
-)
+# Flutter/Dart/Pub related
+**/doc/api/
+**/ios/Flutter/.last_build_id
+.dart_tool/
+.packages
+.pub/
+build/
+# Symbolication
+app.*.symbols
+# Obfuscation
+app.*.map.json
+# Android Studio
+*.iml
+.idea/
+.android/
+FlutterDevSDK/
+# Xcode
+*.pbxuser
+*.mode1v3
+*.mode2v3
+*.perspectivev3
+**/*sync/**
+DerivedData/
+# VS Code
+.vscode/
+# Misc
+*.log
