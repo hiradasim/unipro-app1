@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 import '../supabase_client.dart';
 
 class UniClubPage extends StatefulWidget {
@@ -14,11 +15,18 @@ class _UniClubPageState extends State<UniClubPage> {
   String? message;
 
   Future<void> _login() async {
-    final res = await supabase.auth.signInWithPassword(
-      email: _email.text,
-      password: _password.text,
-    );
-    setState(() => message = res.session != null ? 'Logged in!' : res.error?.message);
+    try {
+      final res = await supabase.auth.signInWithPassword(
+        email: _email.text,
+        password: _password.text,
+      );
+      setState(() =>
+          message = res.session != null ? 'Logged in!' : 'No session returned');
+    } on AuthException catch (error) {
+      setState(() => message = error.message);
+    } catch (_) {
+      setState(() => message = 'Unexpected error');
+    }
   }
 
   @override
